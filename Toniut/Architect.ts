@@ -3,7 +3,7 @@ type buildingAttributes = {
     floors: number;
     material: String;
     zone: String;
-}
+};
 
 
 function Architect(): void {
@@ -36,5 +36,7 @@ function Architect(): void {
         };
     }
 
-    function Build(): 
+    function Build(): building {
+        return Building(attributes);
+    }
 }
