@@ -1,0 +1,55 @@
+img {
+    width: 95%;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 0.3em;
+}
+
+body {
+    align-self: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.headline, .header {
+    text-align: center;
+}
+
+.header {
+    font-size: 5em;
+    margin-bottom: 0.1em;
+}
+
+.headline {
+    font-size: 1.5em;
+}
+
+.maintitle {
+    margin-top: 0.3em;
+    font-size: 2.3em;
+    font-family: Tahoma, Verdana, Segoe;
+    font-weight: bold;
+}
+
+.content {
+    font-family: Tahoma, Verdana, Segoe;
+    size: 8em;
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    column-gap: 0.5em;
+}
+
+.start {
+    margin-top: 0.3em;
+    text-align: center;
+}
+
+.paragraph {
+    display: block;
+    -webkit-margin-after: 1em;
+    -webkit-margin-before: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
