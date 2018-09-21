@@ -1,24 +1,15 @@
-## TP3
+## TP4
 
-Tienen tiempo hasta el viernes 7 de septiembre a las 21Hs para terminar el trabajo.
+Tienen tiempo hasta el viernes 21 de septiembre a las 21Hs para terminar el trabajo.
 
-La idea es que elijan un framework CSS que les guste, no importa cual. Como referencia les dejo algunos:
-
-- [Bootstrap](http://getbootstrap.com/)
-- [Foundation](https://foundation.zurb.com/)
-- [Bulma](https://bulma.io/)
-- [SemanticUI](https://semantic-ui.com/)
-- [Materialize](https://materializecss.com/) (hay muchos frameworks basados en Material, busquen otros si este no los convence)
-- [Skeleton](http://getskeleton.com/) (este es solo una base de utilidades, pero puede que les interese).
-
-Una vez elegido el framework, tienen que hacer una página web (no un sitio) para la portada de un diario local. Formato, colores, secciones, artículos, todo a su elección y gusto. Pueden "inspirarse" en diarios existentes, aunque no les recomiendo que se compliquen tanto.
+La idea es que armen un pequeño listado de personas tal como el que vimos en clase el viernes 14/9. Debe haber un formulario que permita ingresar el nombre, la edad y el sexo de la persona y un botón de `Agregar`. Debajo del formulario debe haber un listado con todas las personas ya ingresadas y el usuario debe poder visualizar solo las personas de un sexo determinado si así lo quisiera.
 
 ### Lineamientos básicos
 
-- El código y el PR que creen cuando terminen tienen que ir contra la rama `tp3`.
+- El código y el PR que creen cuando terminen tienen que ir contra la rama `tp4`.
 - Crear una carpeta con su nombre y dentro de esta un archivo `index.html` con el contenido de la página.
-- No utilicen CDNs. Entiendo que es lo más normal pero con la conexión de la facultad podemos tener problemas luego para visualizarlos. Descarguen lo que necesiten y pónganlo en la misma carpeta que el archivo `index.html`.
-- No utilizar el/los archivos JS que vienen con el framework ni ningún otro framework con el que estén familiarizados (léase jQuery).
+- No se evalúa estilos ni maquetados. No es necesario utilizar un framework CSS.
+- Está prohibido utilizar JS que no sea Vue.js o funciones / códigos propios.
 - No borrar su repo forkeado y forkear de vuelta. Tienen que utilizar las herramientas que provee git para actualizar.
-- Intenten utilizar tags HTML5 y no divs para todo.
+- Utilicen tags HTML5 y no solamente `div`. Tengan en cuenta los diferentes tags disponibles y los atributos de cada uno de ellos.
 - El canal de Slack está para que todos nos saquemos las dudas, pregunten las veces que sea necesario.
