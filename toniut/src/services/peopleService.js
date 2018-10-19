@@ -1,12 +1,12 @@
 import Person from "../prototypes/Person";
 
-let people = [];
 let id = 0;
 let limit = 50;
 let start = 0;
 
 
  export default {
+  people: [],
   get(gender, s = start, l = limit) {
     let filtered = gender ? people.filter(p => p.gender = gender) : people;
 

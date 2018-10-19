@@ -6,7 +6,7 @@ export default {
   name: 'PersonForm',
   components: {},
   props: {
-    
+    service
   },
   data () {
     return {
@@ -27,7 +27,7 @@ export default {
   methods: {
     agregar() {
       if (this.persona.nombre != "" && this.persona.edad >= 0) {
-        create(this.persona);
+        service.create(this.persona);
 
         this.persona = EmptyPerson(newId);
       }

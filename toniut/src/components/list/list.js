@@ -4,7 +4,7 @@ export default {
   name: 'PersonList',
   components: {},
   props: {
-    personas: Array    
+    service    
   },
   data () {
     return {
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     borrarPersona(id) {
-      services.delete(id);
-    }   
+      service.delete(id);
+    }
   }
 }

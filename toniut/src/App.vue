@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <PersonHeader v-bind:count = this.personas.length></PersonHeader>
-    <PersonForm v-bind:personas = this.personas @push-persona="putPerson"></PersonForm>
-    <PersonList @borrar-persona="deletePerson" v-bind:personas= this.personas></PersonList>
+    <PersonHeader v-bind:count = personas.length></PersonHeader>
+    <PersonForm v-bind:service = this.service></PersonForm>
+    <PersonList v-bind:service = this.service></PersonList>
   </div>
 </template>
 
@@ -10,12 +10,13 @@
 import PersonHeader from './components/header/index.vue'
 import PersonForm from './components/form/index.vue'
 import PersonList from './components/list/index.vue'
+import * as service from './services/peopleService'
 
 export default {
   name: 'app',
   data () {
     return {
-      personas: [],
+      personas: service.people,
     }
   },
   methods: {
