@@ -1,0 +1,12 @@
+
+<section class="form">
+  Nombre: <input type="text" v-model="persona.nombre">
+  Edad: <input type="number" v-model="persona.edad">
+  Sexo: <select v-model="persona.sexo" name="sexo">
+      <option value="m">Masculino</option>
+      <option value="f">Femenino</option>
+      <option value="o">Otros</option>
+  </select>
+  <button @click="agregar()">Agregar</button>
+</section>
+

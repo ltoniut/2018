@@ -1,0 +1,9 @@
+
+<section class="list">
+  <ul>
+    <li v-for="(persona, index) in personas" :key="index">
+        <a @click="borrarPersona(persona.id)">{{ persona.nombre + ", " + persona.edad }}</a>
+    </li>
+</ul>
+</section>
+
