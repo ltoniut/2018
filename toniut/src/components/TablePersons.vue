@@ -7,12 +7,12 @@
       <label class="" style="margin-left:300px;">genero filter </label>
       <select id="filtro_genero"  class="" v-model="gender_filter">
         <option value="" selected>Todos</option>
-        <option value="Varon">Varon</option>
-        <option value="Mujer">Mujer</option>
+        <option value="male">Varon</option>
+        <option value="female">Mujer</option>
+        <option value="other">Otros</option>
       </select>
     </section>
     </header>
-           
 
    <table class="table">
   <thead>

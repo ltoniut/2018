@@ -2,27 +2,29 @@
     
 <section id="form-person"  @keyup.enter="submitForm()">
 
-  <div class="form-group">
-    <label for="name">Nombre</label>
-    <input type="text" class="form-control" name="name" id="name" placeholder="ingrese name"  v-model.trim="name">
+  <div class="inputSpace">
+    <label for="name">Nombre: </label>
+    <input type="text" class="form-control" name="name" id="name" placeholder="Ingresar nombre"  v-model.trim="name">
 
   </div>
-  <div class="form-group">
-    <label for="age">Edad</label>
+  <div class="inputSpace">
+    <label for="age">Edad: </label>
     <input type="number" class="form-control" name="age" id="age" placeholder="age" v-model.number="age">
   </div>
    
    
-  <div class="">
-  <input class="form-check-input" type="radio" name="gender" id="gender" value="Varon" v-model="gender">
+  <div>
+  <input class="form-check-input" type="radio" name="gender" id="gender" value="male" v-model="gender">
   <label class="form-check-label" for="gen">
-    varon
+    Hombre
   </label>
-</div>
-<div class="">
-  <input class="form-check-input" type="radio" name="gender" id="gender" value="Mujer" v-model="gender">
+  <input class="form-check-input" type="radio" name="gender" id="gender" value="female" v-model="gender">
   <label class="form-check-label" for="gen">
-    mujer
+    Mujer
+  </label>
+  <input class="form-check-input" type="radio" name="gender" id="gender" value="others" v-model="gender">
+  <label class="form-check-label" for="gen">
+    Otros
   </label>
 </div>
  

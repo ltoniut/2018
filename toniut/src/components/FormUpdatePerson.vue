@@ -19,18 +19,20 @@
   </div>
    
    
-  <div class="">
-  <input class="form-check-input" type="radio" name="gender" id="gender" value="Varon" v-model="gender">
-  <label class="form-check-label" for="gen">
-    varon
-  </label>
-</div>
-<div class="">
-  <input class="form-check-input" type="radio" name="gender" id="gender" value="Mujer" v-model="gender">
-  <label class="form-check-label" for="gen">
-    mujer
-  </label>
-</div>
+  <div>
+    <input class="form-check-input" type="radio" name="gender" id="gender" value="male" v-model="gender">
+    <label class="form-check-label" for="gen">
+      Hombre
+    </label>
+    <input class="form-check-input" type="radio" name="gender" id="gender" value="female" v-model="gender">
+    <label class="form-check-label" for="gen">
+      Mujer
+    </label>
+    <input class="form-check-input" type="radio" name="gender" id="gender" value="other" v-model="gender">
+    <label class="form-check-label" for="gen">
+      Otros
+    </label>
+  </div>
        <div v-if="arrError.length" v-for="error in arrError" :key="error">
             <br>{{ error }}
         </div>
