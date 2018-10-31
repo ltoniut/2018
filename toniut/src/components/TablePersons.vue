@@ -30,7 +30,7 @@
           <td> {{ person.id }} </td>
           <td> {{ person.name }} </td>
           <td> {{ person.age }} </td>
-          <td> {{ person.ggenderenero }} </td>
+          <td> {{ person.gender }} </td>
           <td> <button @click.prevent="deletePerson(person.id)">X</button> </td>
           <td> <router-link :to="{name:'update', params:{id: person.id}}">Modificar</router-link> </td>
         </tr>

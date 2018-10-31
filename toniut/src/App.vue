@@ -8,7 +8,7 @@
       <div id="app">
         <div id="nav">
           <router-link to="/">Agregar</router-link> |
-          <router-link to="/list">Listar</router-link> |
+          <router-link to="/list">Listar</router-link>
         </div>
         <router-view/>
       </div>

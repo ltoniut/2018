@@ -27,7 +27,6 @@ export default {
     })
   },
   create(person) {
-
     person.id = ++lastId;
     people.push(person);
     setStorage('people', people);
@@ -42,7 +41,7 @@ export default {
 
           let peopleFilter = people;
           if (gender !== '') {
-            peopleFilter = peopleFilter.filter(person => person.genero === gender)
+            peopleFilter = peopleFilter.filter(person => person.gender === gender)
           }
           resolve(peopleFilter)
         }, 2000);

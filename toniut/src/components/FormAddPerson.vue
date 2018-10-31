@@ -2,12 +2,12 @@
     
 <section id="form-person"  @keyup.enter="submitForm()">
 
-  <div class="inputSpace">
+  <div class="inputSpace" style="width:40%;">
     <label for="name">Nombre: </label>
-    <input type="text" class="form-control" name="name" id="name" placeholder="Ingresar nombre"  v-model.trim="name">
+    <input type="text" class="form-control" name="name" id="name" placeholder="Ingresar nombre" v-model.trim="name" style="float: right;">
 
   </div>
-  <div class="inputSpace">
+  <div class="inputSpace" style="width:40%; margin:30%;">
     <label for="age">Edad: </label>
     <input type="number" class="form-control" name="age" id="age" placeholder="age" v-model.number="age">
   </div>
@@ -51,7 +51,6 @@ export default {
         this.name &&
         this.age>=0 &&
         this.gender
-
       ) {
         console.log(this.age)
         let person;
