@@ -1,4 +1,4 @@
-# vue-router
+# fantasy-map
 
 ## Project setup
 ```

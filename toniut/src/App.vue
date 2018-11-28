@@ -1,33 +1,46 @@
-<head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-
 <template>
   <v-app dark>
-    <v-card class="text-md-center" align="center">
-      <div id="app">
-        <div id="nav">
-          <router-link to="/">Agregar</router-link> |
-          <router-link to="/list">Listar</router-link>
-        </div>
-        <router-view/>
-      </div>
-    </v-card>
+    <div id="app">
+      <router-view/>
+    </div>
   </v-app>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld'
+    import store from './store/store'
+    import Vue from 'vue';
+    import Vuetify from 'vuetify';
+    import colors from 'vuetify/es5/util/colors';
+    import RealmService from "./services/realmService";
 
-  export default {
-    name: 'App',
-    components: {
-      HelloWorld
-    },
-    data () {
-      return {
-        //
+    Vue.use(Vuetify, {
+      options: {
+        customProperties: true
+      },
+      theme: {
+        primary: colors.black,
+        secondary: colors.grey.darken1,
+        accent: colors.brown,
+        error: colors.red.accent3
+      }});
+
+    export default {
+      name: 'app',
+      data() {
+        return {
+        }
+      },
+      components: {
+      },
+      created () {
+        RealmService.populate();
       }
-    }
-  }
+    };
 </script>
+
+<style scoped>
+  .button {
+    color: var(--v-primary-base);
+    background-color: var(--v-accent);
+  }
+</style>

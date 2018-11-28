@@ -1,24 +1,24 @@
-export function Person(id, name, age, gender) {
+function Map(id, name, description, varieties, realms) {
   this.id = id,
-    this.name = name,
-    this.age = age,
-    this.gender = gender
-
-    this.translatedGender = new function() {
-      let translation;
-
-      switch(this.gender) {
-        case "male":
-          return "Hombre";
-          break;
-        case "female":
-          return "Mujer";
-          break;
-        case "other":
-          return "Otros";
-          break;
-        default:
-          return "Error";
-      }
-    }
+  this.name = name,
+  this.description = description,
+  this.varieties = varieties,
+  this.realms = realms
 }
+
+function Realm(id, name, description, cities) {
+  this.id = id,
+  this.name = name,
+  this.description = description,
+  this.cities = cities
+}
+
+function User(id, name, password) {
+  this.id = id,
+  this.name = name,
+  this.password = password
+}
+
+export { Map, Realm };
+
+  //MODIFY EVERYTHING

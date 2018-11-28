@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Users from './views/Users'
-import AddPerson from './views/AddPerson.vue'
-import ListPersons from './views/ListPersons.vue'
-import UpdatePerson from '@/views/UpdatePerson.vue' 
+import MainScreen from './views/MainScreen'
+import MapViewer from './views/MapViewer'
+import MapCreation from './views/MapCreation'
+import Register from './views/Register'
+import Login from './views/Login'
+
 Vue.use(Router)
 
 export default new Router({
@@ -14,30 +16,27 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: AddPerson
+      component: MainScreen
     },
     {
-      path: '/add',
-      name: 'add',
-      component: AddPerson
+      path: '/map/:id',
+      name: 'map',
+      component: MapViewer
     },
     {
-      path: '/list',
-      name: 'list',
-      component: ListPersons
+      path: '/map/:id/:regId',
+      name: 'mapReg',
+      component: MapViewer
     },
     {
-      path: '/update/:id',
-      name: 'update',
-      component: UpdatePerson
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/register',
+      name: 'register',
+      component: Register
     }
   ]
 })

@@ -1,0 +1,149 @@
+{
+    "users": [{
+        "id": 1,
+        "name": "admin",
+        "password": 1234
+    }],
+    "creations": [{
+            "id": 1,
+            "name": "Fantasy 1",
+            "description": "Un mapa de ejemplo para los propósitos de éste programa. Nada especial, realmente. El propósito de mapas de fantasía como éste es normalmente para propósitos literarios o para juegos. Un ejemplo básico que va a servir nuestros propósitos.",
+            "imageVariants": [
+                {
+                    "id": 1,
+                    "url": "https://i.imgur.com/qyEq1S5.jpg",
+                    "name": "Clean",
+                    "default": false
+                },
+                {
+                    "id": 2,
+                    "url": "https://i.imgur.com/FF3ciUs.jpg",
+                    "name": "Labels",
+                    "default": true
+                }
+            ],
+            "realms": [
+                {
+                    "id": 1,
+                    "name": "Vamiosina",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Madon",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Goltaria"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Ferikia",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Radol"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Veria",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "name": "Fenes",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "name": "Breid",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "name": "Bordariel",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "name": "Mouther",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "name": "Sowia",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Xenobia"
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "name": "Bates",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Loran"
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "name": "Samersland",
+                    "x": "",
+                    "y": "",
+                    "cities": [
+                        {
+                            "name": "Saner"
+                        }
+                    ]
+                }
+            ]
+        }]
+}
