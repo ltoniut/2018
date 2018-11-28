@@ -1,6 +1,6 @@
-import mapData from "../assets/map-data.json";
+import data from "../assets/map-data.json";
 
-let maps = mapData.creations;
+let maps = data.creations;
 
 export default {
     getAll() {

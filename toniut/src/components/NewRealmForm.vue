@@ -89,7 +89,7 @@
             },
             addFauna(event, name) {
                 this.fauna.push({id: ++this.animalId, name: name});
-            }
+            },
             randomizeName() {
                 const engName = axios.get('https://donjon.bin.sh/fantasy/random/rpc.cgi', { params: { type: 'Kingdom Name', n:"1" } })[0];
             },
