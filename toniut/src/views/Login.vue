@@ -1,18 +1,25 @@
 <template>
-  <div>
-    <img alt="Vue logo" src="../assets/compass.png">
-    <LoginForm></LoginForm>
-  </div>
+  <v-container>
+    <v-layout row>
+      <v-spacer/>
+      <img alt="Vue logo" src="../assets/compass.png">
+      <v-spacer/>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs12>
+        <login-form></login-form>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 import LoginForm from "../components/LoginForm";
-import router from '../router.js';
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
-    LoginForm
+    "login-form": LoginForm
   }
-}
+};
 </script>

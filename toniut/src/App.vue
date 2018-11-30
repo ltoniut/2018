@@ -1,30 +1,22 @@
 <template>
-    <div id="app">
+  <v-app light>
+    <v-content>
       <router-view/>
-    </div>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-    import Vue from 'vue';
     import RealmService from "./services/realmService";
 
     export default {
       name: 'app',
-      data() {
-        return {
-        }
-      },
-      components: {
-      },
       created () {
-        RealmService.populate();
+        // RealmService.populate()
       }
     };
 </script>
 
-<style scoped>
-  .button {
-    color: var(--v-primary-base);
-    background-color: var(--v-accent);
-  }
+<style>
+  html { overflow-y: auto; }
 </style>

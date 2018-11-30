@@ -2,7 +2,7 @@ function Map(id, name, description, varieties, realms) {
   this.id = id,
   this.name = name,
   this.description = description,
-  this.varieties = varieties,
+  this.imageVariants = varieties,
   this.realms = realms
 }
 

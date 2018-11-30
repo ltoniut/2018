@@ -4,10 +4,15 @@ import uniqueId from 'lodash/uniqueId'
 export default {
     maps: [],
     getAll() {
-      return axios.get('https://api.myjson.com/bins/zy32i').then(response => {
-        this.maps = response.data.creations;
-        return this.maps;
+      if (this.maps.length === 0){
+        axios.get('https://api.myjson.com/bins/zy32i').then(response => {
+          this.maps = response.data.creations;
+        }).catch(function(error) {
+        console.log(error);
+        alert("Ha habido un error, verifica la conexión a internet");
       });
+      }
+      return this.maps;
     },
     create(map) {
       const newMap = {
@@ -18,7 +23,8 @@ export default {
       return this.maps
     },
     getOne(id) {
-      return this.maps.find(map => map.id === +id);
+      const test = this.maps.find(map => map.id === id);
+      return test;
     }
   }
   

@@ -1,21 +1,24 @@
 <template>
-  <div id="login">
-    <div class="form-group">
-        <label for="name">Nombre: </label>
-        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" v-model.trim="name">
-    </div>
-    <div class="form-group">
-        <label for="password">Password: </label>
-        <input type="password" class="form-control" name="password" id="password" v-model.trim="password">
-    </div>
-    <button @click="login()" class="button-primary">Login</button><br><br>    
-    <button @click="register()" class="button-primary">Registrarse</button>
-  </div>
+  <v-form @submit="login()">
+    <v-card>
+      <v-card-title>
+        Iniciar sesion
+      </v-card-title>
+      <v-card-text>
+        <v-text-field label="Nombre" single-line v-model.trim="name"/>
+        <v-text-field type="password" label="Password" single-line v-model.trim="password"/>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer/>
+        <v-btn @click="login()" color="primary">Ingresar</v-btn>
+        <v-btn @click="register()" color="accent">Registrarse</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>
 import UserService from "../services/userService";
-import router from "../router.js";
 
 export default {
   name: "LoginForm",
@@ -27,17 +30,19 @@ export default {
   },
   methods: {
     login() {
-      UserService.login(this.name, this.password).then(token => {
-        this.$store.commit("change", name);
-        this.$store.commit("login", token);
-        router.push({ name: "home" });
-      },
-      error => {
-        alert("Nombre de usuario o contraseña incorrectos");
-      })
+      UserService.login(this.name, this.password).then(
+        token => {
+          this.$store.commit("change", name);
+          this.$store.commit("login", token);
+          this.$router.push({ name: "home" });
+        },
+        error => {
+          alert("Nombre de usuario o contraseña incorrectos");
+        }
+      );
     },
     register() {
-      router.push({ name: "register" });
+      this.$router.push({ name: "register" });
     }
   }
 };

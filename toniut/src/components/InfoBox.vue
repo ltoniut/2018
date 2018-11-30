@@ -8,18 +8,19 @@
     </div>
     <div class="regions">
       <tr v-for="(region, key) in this.regions" :key="key">
-        <a class="link" v-on:click="goToRegion($event, region.id)">{{ region.name }}</a>
+        <a class="link" v-on:click="goToRegion($event, region.id)">• {{ region.name }}</a>
       </tr>
     </div>
     <div class="cities">
       <label>{{ citiesMessage }}</label><br>
       <tr v-for="(city, key) in this.cities" :key="key">
-        <label>{{ city.name }}</label>
+        <label>- {{ city.name }}</label>
       </tr>
-    </div>
+    </div><br>
     <div class="fauna">
+      <label>{{ faunaMessage }}</label><br>
       <tr v-for="(animal, key) in this.fauna" :key="key">
-        <label>{{ animal }}</label>
+        <label>- {{ animal }}</label>
       </tr>
     </div><br><br>
     <div class="leader">
@@ -52,7 +53,8 @@ export default {
       citiesMessage: "",
       leader: "",
       leaderImg: "",
-      returner: ""
+      returner: "",
+      faunaMessage: ""
     };
   },
   methods: {
@@ -64,14 +66,21 @@ export default {
 
       this.id = map.id;
       this.name = realm.name;
-      this.citiesMessage = "Ciudades Principales:";
       this.description = realm.description;
       this.cities = realm.cities;
+      if (this.cities.length) {
+        this.citiesMessage = "Ciudades Principales:";
+      }
       this.regions = [];
+      this.fauna = realm.fauna;
+      if (this.fauna.length) {
+        this.faunaMessage = "Fauna relevante:";
+      }
       this.returner = "← Volver";
 
-      if(realm.leader) {
-        this.leader = "Liderado por " + realm.leader;
+      if(realm.leader.name) {
+        this.leader = "Liderado por " + realm.leader.name;
+        this.leaderImg = realm.leader.imgUrl;
       }
     },
     recreate(event) {
@@ -79,6 +88,8 @@ export default {
       this.name = map.name;
       this.description = map.description;
       this.citiesMessage = "";
+      this.faunaMessage = "";
+      this.fauna = [];
       this.cities = [];
       this.animals = [];
       this.regions = map.realms;

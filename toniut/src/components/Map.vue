@@ -2,7 +2,7 @@
   <div id="map">
     <img :src="this.image" :alt="this.current.name" style="width:100%;" />
     <div v-for="variant in this.variants" :key="variant.id">
-      <button @click="shiftMap(variant.id)" class="button-primary">{{ variant.name }}</button>
+      <v-btn @click="shiftMap(variant.id)" color="primary">{{ variant.name }}</v-btn>
     </div>
   </div>
 </template>

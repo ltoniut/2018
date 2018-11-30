@@ -1,19 +1,14 @@
 <template>
-    <div class="">
-        <select v-model="selectedMap" @change="chooseMap()">
-            <option v-for="map in maps" v-bind:value="map.id" v-bind:key="map.id" @>
-                {{ map.name }}
-            </option>
-        </select> <br>
-        <button id="new-map" v-on:click="createNew()">Nuevo Mapa</button>
-    </div>
+  <v-card>
+    <v-select v-model="selectedMap" :items="maps" label="Elegir mapa" item-text="name" item-value="id" @change="chooseMap()" />
+    <v-btn id="new-map" v-on:click="createNew()">Nuevo Mapa</v-btn>
+  </v-card>
 </template>
 
 
 <script>
 //https://fakejson.com/documentation
 import RealmService from "@/services/realmService";
-import router from "../router.js";
 
 export default {
   name: "MapSelector",
@@ -26,17 +21,15 @@ export default {
   methods: {
     chooseMap() {
       if (this.selectedMap !== null) {
-        router.push({ name: "map", params: { id: this.selectedMap } });
+        this.$router.push({ name: "map", params: { id: this.selectedMap } });
       }
     },
     createNew() {
-      router.push({ name: "creation" });
+      this.$router.push({ name: "creation" });
     }
   },
   created() {
-    RealmService.getAll().then(maps => {
-      this.maps = maps;
-    });
+      this.maps = RealmService.getAll();
   }
 };
 </script>

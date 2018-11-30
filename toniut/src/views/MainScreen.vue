@@ -7,7 +7,6 @@
 
 <script>
 import MapSelector from "../components/MapSelector";
-import router from '../router.js';
 
 export default {
   name: 'MainScreen',
@@ -16,7 +15,7 @@ export default {
   },
   created() {
     if (!this.$store.getters.token) {
-      router.push({ name: 'login' });
+      this.$router.push({ name: 'login' });
     }
   }
 }

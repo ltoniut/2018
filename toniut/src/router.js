@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import App from './App'
 import MainScreen from './views/MainScreen'
 import MapViewer from './views/MapViewer'
 import MapCreation from './views/MapCreation'
@@ -14,34 +15,39 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: MainScreen
-    },
-    {
-      path: '/map/:id',
-      name: 'map',
-      component: MapViewer
-    },
-    {
-      path: '/map/:id/:regId',
-      name: 'mapReg',
-      component: MapViewer
-    },
-    {
-      path: '/creation',
-      name: 'creation',
-      component: MapCreation
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: Register
-    }
-  ]
+      path: '/',      
+      component: App,
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: MainScreen
+        },
+        {
+          path: '/map/:id',
+          name: 'map',
+          component: MapViewer
+        },
+        {
+          path: '/map/:id/:regId',
+          name: 'mapReg',
+          component: MapViewer
+        },
+        {
+          path: '/creation',
+          name: 'creation',
+          component: MapCreation
+        },
+        {
+          path: '/login',
+          name: 'login',
+          component: Login
+        },
+        {
+          path: '/register',
+          name: 'register',
+          component: Register
+        }
+      ]
+    }]
 })

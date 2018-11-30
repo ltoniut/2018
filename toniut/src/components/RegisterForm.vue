@@ -1,15 +1,19 @@
 <template>
-  <div id="register">
-    <div class="form-group">
-        <label for="name">Nombre: </label>
-        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" v-model.trim="name">
-    </div>
-    <div class="form-group">
-        <label for="password">Password: </label>
-        <input type="password" class="form-control" name="password" id="password" v-model.trim="password">
-    </div>
-    <button @click="register()" class="button-primary">Registrarse</button>
-  </div>
+	<v-form @submit="register()">
+    <v-card>
+			<v-card-title>
+				Registro
+			</v-card-title>
+      <v-card-text>
+        <v-text-field label="Nombre" single-line v-model.trim="name"/>
+        <v-text-field type="password" label="Password" single-line v-model.trim="password"/>
+      </v-card-text>
+      <v-card-actions>
+				<v-spacer/>
+        <v-btn type="submit" color="accent">Registrarse</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-form>
 </template>
 
 <script>

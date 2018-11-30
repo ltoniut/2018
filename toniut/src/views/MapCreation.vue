@@ -1,14 +1,14 @@
 <template>
-<div>
-  <div style="width: 80%;">
-    <AddMapForm></AddMapForm>
-  </div><br>
-  <button @click="backHome()" color="secondary" class="button-primary">Regresar a selección</button>
-</div>
+  <v-card>
+    <v-layout row xs10>
+      <AddMapForm></AddMapForm>
+    </v-layout>
+    <v-btn @click="backHome()" color="secondary">Regresar a selección</v-btn>
+  </v-card>
 </template>
+
 <script>
 import AddMapForm from '../components/AddMapForm.vue';
-import router from '../router.js';
 
 export default {
   name: 'MapViewer',
@@ -17,12 +17,12 @@ export default {
   },
   methods: {
     backHome() {
-      router.push({ name: "home" });
+      this.$router.push({ name: "home" });
     }
   },
   created() {
     if (!this.$store.getters.token) {
-      router.push({ name: 'login' });
+      this.$router.push({ name: 'login' });
     }
   }
 }
