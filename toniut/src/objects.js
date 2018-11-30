@@ -13,6 +13,12 @@ function Realm(id, name, description, cities) {
   this.cities = cities
 }
 
-export { Map, Realm };
+function User(id, name, password) {
+  this.id = id,
+  this.name = name,
+  this.password = password
+}
+
+export { Map, Realm, User };
 
   //MODIFY EVERYTHING

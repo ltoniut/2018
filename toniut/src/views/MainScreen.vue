@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <img alt="Vue logo" src="../assets/compass.png">
     <MapSelector></MapSelector>
   </div>
@@ -7,11 +7,17 @@
 
 <script>
 import MapSelector from "../components/MapSelector";
+import router from '../router.js';
 
 export default {
   name: 'MainScreen',
   components: {
     MapSelector
+  },
+  created() {
+    if (!this.$store.getters.token) {
+      router.push({ name: 'login' });
+    }
   }
 }
 </script>

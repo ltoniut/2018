@@ -11,7 +11,9 @@
             <button @click="getManyNames()">Nombres de ejemplo</button>
         </div>
         <div class="examples">
-
+            <tr v-for="name in this.exampleNames" :key="name">
+               <a class="link" v-on:click="setName($event, name)">{{name}}</a>
+            </tr>
         </div>
         <br>
         <div class="form-group">
@@ -47,6 +49,7 @@
     import { Map, Realm } from "../objects.js";
     import NewRealmForm from "./NewRealmForm.vue";
     import RealmService from "../services/realmService";
+    import ShufflingService from "../services/shufflingService";
     import router from '../router.js';
     import axios from 'axios';
 
@@ -70,16 +73,23 @@
     },
     methods: {
         addVariety() {
-            this.varieties.push({id: this.varietyId++, name: this.varietyName, url: this.varietyUrl});
+            this.varieties.push({id: ++this.varietyId, name: this.varietyName, url: this.varietyUrl});
         },
         addRealm() {
-            this.realms.push(new Realm(this.realmId++, "", "", []));
+            this.realms.push(new Realm(++this.realmId, "", "", []));
         },
         getManyNames() {
-            this.exampleNames = axios.get('https://donjon.bin.sh/name/rpc.cgi', { params: { type: 'Draconic Male', n:"10" } });
+            axios.get('https://api.myjson.com/bins/9sq6i').then(response => {
+                this.exampleNames = ShufflingService.shuffle(response.data, 5);
+             });
         },
         randomizeName() {
-            this.name = axios.get('https://donjon.bin.sh/name/rpc.cgi', { params: { type: 'Draconic Male', n:"1" } })[0];
+            axios.get("https://api.myjson.com/bins/9sq6i").then(response => {
+            this.name = ShufflingService.shuffle(response.data, 1)[0];
+        });
+        },
+        setName(event, name) {
+            this.name = name;
         },
         submitForm() {
         if (
@@ -88,16 +98,14 @@
             this.varieties.length !== 0 &&
             this.realms.length !== 0
         ) {
-            console.log(this.edad)
-            let map;
-            map = new Map(
+            const map = new Map(
                 0,
                 this.name,
                 this.description,
                 this.varieties,
                 this.realms
             );
-            RealmService.create(map);
+            RealmService.create(maps, map);
             router.push({name: 'home'});
         }
         }

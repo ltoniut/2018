@@ -1,23 +1,26 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-export const store = new Vuex.Store({
-    state: {
-      logged: false,
-      user: ""
+export default new Vuex.Store({
+  state: {
+    token: null,
+    user: ""
+  },
+  mutations: {
+    change(state, user) {
+      state.user = user;
     },
-    mutations: {
-      change(state, user) {
-        state.user = user
-      },
-      login(state) {
-          state.logged = true
-      }
+    login(state, token) {
+      state.token = token;
     },
-    getters: {
-        logged: state => state.logged,
-        user: state => state.user
+    logout(state) {
+      state.token = null;
     }
-  })
+  },
+  getters: {
+    token: state => state.token,
+    user: state => state.user
+  }
+});

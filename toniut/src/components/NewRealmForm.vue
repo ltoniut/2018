@@ -10,103 +10,129 @@
             <textarea class="form-control" name="description" id="description" placeholder="Descripcion" v-model.trim="description"></textarea>
         </div>
         <div class="form-group">
-            <label for="description">Clima predominante: </label>
-            <select v-model="climate">
-                <option value="Plain">Planicies</option>
-                <option value="Mountain">Montañas</option>
-                <option value="Marsh">Pantanos</option>
-                <option value="Hill">Colinas</option>
-                <option value="Forest">Bosques</option>
-                <option value="Desert">Desierto</option>
-                <option value="Aquatic">Océano</option>
+            <label for="description">Terreno predominante: </label>
+            <select v-model="terrain">
+                <option v-for="terrain in terrainOptions" v-bind:value="terrain.english" :key="terrain">
+                  {{ terrain.spanish }}
+                </option>
             </select>
         </div>
         <div class="form-group">
             <label for="newFauna">Fauna: </label><br>
             <input type="text" class="form-control" name="animalName" id="animalName" v-model.trim="animalName">
-            <button @click="addFauna()" class="submitButton">Agregar fauna</button>
+            <button @click="addInputFauna()" class="submitButton">Agregar fauna</button>
             <br>
-            <tr v-for="animal in this.fauna" :key="animal.id">
-                <label>{{animal.name}}</label><br>
+            <tr v-for="animal in this.fauna" :key="animal">
+                <label>{{animal}}</label><button @click="removeFauna(animal)">X</button><br>
             </tr>
-            
-            <button @click="recommendFauna()" class="submitButton">Recomendar</button>
+            <button @click="recommendFauna()" class="submitButton">Recomendar Fauna Local</button>
             <br>
-            <tr v-for="animal in this.recommendedFauna" :key="animal.name">
-               <a class="link" v-on:click="addFauna($event, animal.name)">{{animal.name}}</a>
+            <tr v-for="animal in this.recommendedFauna" :key="animal">
+               <a class="link" v-on:click="addFauna($event, animal)">{{animal}}</a>
             </tr>
         </div>
         <label for="cityName">Nueva ciudad: </label>
         <input type="text" class="form-control" name="cityName" id="cityName" v-model.trim="cityName">
-        <button @click="addCity()" class="submitButton">Agregar ciudad</button><br>
-        <button @click="recommendCityNames()" class="submitButton">Recomendar nombres</button>
-
-        <br>
-        <tr v-for="city in this.cities" :key="city.id">
-            <label>{{city.name}}</label><br>
+        <button @click="addInputCity()" class="submitButton">Agregar ciudad</button><br>
+        <tr v-for="city in this.cities" :key="city">
+            <label>{{ city }} </label><button @click="removeCity(city)">X</button><br>
         </tr>
+        <button @click="recommendCityNames()" class="submitButton">Recomendar nombres</button>
+            <br>
+            <tr v-for="city in this.recommendedCities" :key="city">
+               <a class="link" v-on:click="addCity($event, city)">{{city}}</a>
+            </tr>
+        <label for="leader">Lider:</label><br>
+        <label for="leaderName">Nombre: </label><input type="text" class="form-control" name="leaderName" id="leaderName" placeholder="Nombre" v-model.trim="leaderName"><br>
+        <label for="leaderUrl">Imagen: </label><input type="text" class="form-control" name="leaderUrl" id="leaderUrl" placeholder="Url de imagen" v-model.trim="leaderUrl"><br>
         <hr>
+        <button @click="recommendLeader()" class="submitButton">Recomendar Lider de acuerdo al Terreno</button>
     </section>
 </template>
 
 <script>
-    //((Google Translate))
-    import { Realm } from "../objects.js";
-    import axios from 'axios';
+import axios from "axios";
+import ShufflingService from "@/services/shufflingService";
 
-    export default {
-        name: "NewRealmForm",
-        data() {
-            return {
-                name: "",
-                description: "",
-                climate: "",
-                cities: [],
-                cityId: 0,
-                animalId: 0,
-                cityName: "",
-                animalName: "",
-                dominantClimate: "",
-                fauna: [],
-                recommendedFauna: [],
-                recommendedCities: []
-            };
-        },
-        props: {
-            realm: {
-                type: Object
-            }
-        },
-        methods: {
-            addCity() {
-                this.cities.push({id: ++this.cityId, name: this.cityName});
-            },
-            addCity(event, name) {
-                this.cities.push({id: ++this.cityId, name: name});
-            },
-            addFauna() {
-                this.fauna.push({id: ++this.animalId, name: this.animalName});
-            },
-            addFauna(event, name) {
-                this.fauna.push({id: ++this.animalId, name: name});
-            },
-            randomizeName() {
-                const engName = axios.get('https://donjon.bin.sh/fantasy/random/rpc.cgi', { params: { type: 'Kingdom Name', n:"1" } })[0];
-            },
-            recommendCityNames() {
-                this.recommendedCities = axios.get('https://donjon.bin.sh/fantasy/random/rpc.cgi', { params: { type: 'Common Town Name', n:"1" } });
-            },
-            recommendFauna() {
-                const animalArray = [];
-                let randomNmb = 0;
-
-                for (let i = 0; i < 10; i++) {
-                    randomNmb = Math.random() * (12) + 1;
-                    animalArray.push(axios.get('https://donjon.bin.sh/pathfinder/encounter/rpc.cgi', { params: { level: randomNmb, climate:"Temperate", terrain: this.dominantClimate } })[0];)
-                }
-                
-                this.recommendedFauna = animalArray;
-            }
-        }
+export default {
+  name: "NewRealmForm",
+  data() {
+    return {
+      name: "",
+      description: "",
+      terrain: "",
+      cities: [],
+      cityId: 0,
+      animalId: 0,
+      cityName: "",
+      animalName: "",
+      terrainOptions: [],
+      leaderName: "",
+      leaderUrl: "",
+      fauna: [],
+      recommendedFauna: [],
+      recommendedCities: []
     };
+  },
+  props: {
+    realm: {
+      type: Object
+    }
+  },
+  methods: {
+    addInputCity() {
+      if (!this.cities.includes(this.cityName)) {
+        this.cities.push({ name: this.cityName });
+      }
+    },
+    addCity(event, name) {
+      if (!this.cities.includes(name)) {
+        this.cities.push({ name: name });
+      }
+    },
+    addInputFauna() {
+      if (!this.fauna.includes(this.animalName)) {
+        this.fauna.push(this.animalName);
+      }
+    },
+    addFauna(event, name) {
+      if (!this.fauna.includes(name)) {
+        this.fauna.push(name);
+      }aa
+    },
+    randomizeName() {
+      axios.get("https://api.myjson.com/bins/i6xt6").then(response => {
+        this.name = ShufflingService.shuffle(response.data, 1)[0];
+      });
+    },
+    recommendCityNames() {
+      axios.get("https://api.myjson.com/bins/up1ii").then(response => {
+        this.recommendedCities = ShufflingService.shuffle(response.data, 5);
+      });
+    },
+    recommendFauna() {
+      axios.get("http://api.myjson.com/bins/11wdxm").then(response => {
+        this.recommendedFauna = ShufflingService.shuffleByTerrain(response.data, 5, this.terrain);
+      });
+    },
+    removeCity(name) {
+      this.cities = this.cities.filter(c => c !== name);
+    },
+    removeFauna(name) {
+      this.fauna = this.fauna.filter(a => a !== name);
+    },
+    recommendLeader() {
+      axios.get("https://api.myjson.com/bins/occhm").then(response => {
+        const leader = ShufflingService.shuffleByTerrain(response.data, 1, this.terrain)[0];
+        this.leaderName = leader.name;
+        this.leaderUrl = leader.imgUrl;
+      })
+    }
+  },
+  created() {
+    axios.get("http://api.myjson.com/bins/b6o0q").then(response => {
+        this.terrainOptions = response.data;
+      });
+  },
+};
 </script>

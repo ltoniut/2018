@@ -1,0 +1,17 @@
+<template>
+  <div>
+    <img alt="Vue logo" src="../assets/compass.png">
+    <RegisterForm></RegisterForm>
+  </div>
+</template>
+
+<script>
+import RegisterForm from "../components/RegisterForm";
+
+export default {
+  name: 'Register',
+  components: {
+    RegisterForm
+  }
+}
+</script>

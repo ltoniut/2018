@@ -1,40 +1,24 @@
-import data from "../assets/map-data.json";
-
-let maps = data.creations;
+import axios from 'axios';
+import uniqueId from 'lodash/uniqueId'
 
 export default {
+    maps: [],
     getAll() {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(maps)
-        }, 0)
-      })
+      return axios.get('https://api.myjson.com/bins/zy32i').then(response => {
+        this.maps = response.data.creations;
+        return this.maps;
+      });
     },
-
     create(map) {
-      let maxid = 0;
-
-      maps.map(function(obj){     
-          if (obj.id > maxid) maxid = obj.id;    
-      });
-
-      map.id = ++maxid;
-      maps.push(map);
+      const newMap = {
+        ...map,
+        id: uniqueId()
+      }
+      this.maps = [...this.maps, newMap]
+      return this.maps
     },
-
-    /*
-    delete(id) {
-      getStorage();
-      maps = maps.filter(map => map.id !== id);
-      setStorage('people', people);
-    },*/
-
     getOne(id) {
-      return new Promise((resolve) => {
-        setTimeout(
-          () => {
-            resolve(maps.find(map => map.id === +id));
-          }, 0);
-      });
-    },
+      return this.maps.find(map => map.id === +id);
+    }
   }
+  
